@@ -28,7 +28,7 @@ repos:
         args:
           - --quiet
           - --format=custom
-          - --configfile=tests/bandit.yaml
+          - --configfile=.bandit.yaml
         files: ^(ccc-api|script|tests)/.+\.py$
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -48,3 +48,12 @@ repos:
     rev: v1.26.1
     hooks:
       - id: yamllint
+
+  - repo: local
+    hooks:
+      - id: pytest-check
+        name: pytest-check
+        entry: pytest
+        language: system
+        pass_filenames: false
+        always_run: true
